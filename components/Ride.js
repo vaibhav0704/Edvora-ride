@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-function Ride({ img, id, origin, station, date }) {
+function Ride({ img, id, origin, station, date, distance }) {
   return (
     <div className="w-full h-48 bg-black-950 rounded-lg flex justify-start items-center px-6 mb-8">
       <Image src={img}
@@ -14,7 +14,7 @@ function Ride({ img, id, origin, station, date }) {
         <p className="text-lg text-gray-400">Origin Sation: {origin}</p>
         <p className="text-lg text-gray-400">station path: {station}</p>
         <p className="text-lg text-gray-400">Date: {date}</p>
-        <p className="text-lg text-gray-400">Distance</p>
+        <p className="text-lg text-gray-400">Distance: {distance}</p>
       </div>
     </div>
   )
