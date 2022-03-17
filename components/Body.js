@@ -138,7 +138,7 @@ function Body ({ data, states, currentTimestamp }) {
                 id={city}
                 key={city}
                 onClick={(e) => changeCity(e.target.innerText)}
-                className="h-12 flex items-center justify-around rounded-xl mb-4 bg-zinc-850"
+                className="h-12 w-60 flex items-center justify-around rounded-xl mb-4 bg-zinc-850"
               >
                 <p className="text-white">{city}</p>
               </div>
