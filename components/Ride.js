@@ -13,7 +13,7 @@ function Ride({ img, id, origin, station, date, distance, city, state }) {
         <div className="ml-6">
           <p className="text-lg text-gray-400">Ride Id: {id}</p>
           <p className="text-lg text-gray-400">Origin Sation: {origin}</p>
-          <p className="text-lg text-gray-400">station path: {station}</p>
+          <p className="text-lg text-gray-400">station path: {JSON.stringify(station)}</p>
           <p className="text-lg text-gray-400">Date: {date}</p>
           <p className="text-lg text-gray-400">Distance: {distance}</p>
         </div>

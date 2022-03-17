@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { MenuAlt2Icon } from "@heroicons/react/solid";
-import { ChevronRightIcon } from "@heroicons/react/solid"
+import { 
+  ChevronLeftIcon, 
+  MenuAlt2Icon, 
+  ChevronRightIcon 
+} from "@heroicons/react/solid";
 import Ride from './Ride';
 import { cityFilter, filterRide } from '../utils/rideFilter';
 
@@ -30,7 +33,7 @@ function Body ({ data, states, currentTimestamp }) {
   const changeCity = (city) => {
     setCityMenu(false);
     setCity(city);
-  }
+  };
 
   return (
     <div className="min-h-screen w-full h-full bg-zinc-750 px-8 pb-8">
@@ -58,18 +61,24 @@ function Body ({ data, states, currentTimestamp }) {
           <MenuAlt2Icon 
             onClick={() => {
               setOpen(!open);
+              setStateMenu(false);
+              setCityMenu(false);
             }}
             className="h-8 w-8 text-white" 
           />
           <p
-            onClick={() => setOpen(!open)} 
+            onClick={() => {
+              setOpen(!open);
+              setStateMenu(false);
+              setCityMenu(false);
+            }} 
             className="text-lg text-white"
           >Filter</p>
           {open && (
             <div className="absolute flex-col top-36 w-48 p-4 -translate-x-2/4 bg-black-950 rounded-2xl overflow-hidden justify-center">
               <div className="w-full">
-                <p className="text-white mb-2">Filters</p>
-                <hr className="text-white mb-2" />
+                <p className="text-white mb-2 ml-2 font-extralight">Filters</p>
+                <hr className="text-white mb-4" />
                 <div 
                   onClick={() => {
                     setOpen(!open);
@@ -78,7 +87,7 @@ function Body ({ data, states, currentTimestamp }) {
                   className="h-8 flex items-center justify-around rounded-xl mb-4 bg-zinc-850" 
                 >
                   <p className="text-white">State</p>
-                  <ChevronRightIcon className="h-3/4" />
+                  <ChevronRightIcon className="h-3/4 text-white" />
                 </div>
                 <div 
                   onClick={() => {
@@ -88,19 +97,26 @@ function Body ({ data, states, currentTimestamp }) {
                   className="h-8 flex items-center justify-around rounded-xl bg-zinc-850"
                 >
                   <p className="text-white">Cities</p>
-                  <ChevronRightIcon className="h-3/4" />
+                  <ChevronRightIcon className="h-3/4 text-white" />
                 </div>
               </div>
             </div>
           )}
           {stateMenu && (
-            <div className="absolute flex-col top-36 w-48 p-4 h-1/2 -translate-x-2/4 bg-black-950 rounded-2xl overflow-scroll">
+            <div className="absolute flex-col top-36 w-70 p-4 h-1/2 -translate-x-3/4 bg-black-950 rounded-2xl overflow-scroll">
+              <ChevronLeftIcon onClick={() => {
+                setStateMenu(false);
+                setOpen(true);
+              }} 
+              className="text-white h-8 mb-2"
+              />
+              <hr className="text-white mb-4"/>
               {states.map(state => (
                 <div 
                   id={state}
                   key={state}
                   onClick={(e) => changeState(e.target.innerText)}
-                  className="h-16 flex items-center justify-around rounded-xl mb-4 bg-zinc-850"
+                  className="h-12 w-60 flex items-center justify-around rounded-xl mb-4 bg-zinc-850"
                 >
                   <p className="text-white">{state}</p>
                 </div>
@@ -108,13 +124,21 @@ function Body ({ data, states, currentTimestamp }) {
             </div>
           )}
           {cityMenu && (
-            <div className="absolute flex-col top-36 w-48 p-4 h-1/2 -translate-x-2/4 bg-black-950 rounded-2xl overflow-scroll">
+            <div className="absolute flex-col top-36 w-70 p-4 h-1/2 -translate-x-3/4 bg-black-950 rounded-2xl overflow-scroll">
+            <ChevronLeftIcon onClick={() => {
+              setCityMenu(false);
+              setOpen(true);
+            }} 
+            className="text-white h-8 mb-2"
+            />
+            <hr className="text-white mb-4"/>
+
             {cityList && cityList.map(city => (
               <div 
                 id={city}
                 key={city}
                 onClick={(e) => changeCity(e.target.innerText)}
-                className="h-16 flex items-center justify-around rounded-xl mb-4 bg-zinc-850"
+                className="h-12 flex items-center justify-around rounded-xl mb-4 bg-zinc-850"
               >
                 <p className="text-white">{city}</p>
               </div>
