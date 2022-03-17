@@ -29,3 +29,12 @@ export const filterRide = (data, rideFilter, state, city, currentTimestamp) => {
   }
 };
 
+export const cityFilter = (data, state) => {
+  const filteredRide = data.filter((ride) => ride.state === state);
+  const cleanRide = (rides) => rides.filter((v,i) => rides.indexOf(v) === i);
+  const cleanRides = cleanRide(filteredRide);
+  let cities = [];
+  cleanRides.map(ride => cities.push(ride.city));
+  return cities;
+}
+

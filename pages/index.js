@@ -17,7 +17,7 @@ export default function Home({ data, profileData, states }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header profile={profileData}/>
-      <Body data={data} profileData={profileData} states={states} currentTimestamp={currentTimestamp} />
+      <Body data={data} states={states} currentTimestamp={currentTimestamp} />
     </div>
   )
 };
