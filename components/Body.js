@@ -20,8 +20,6 @@ function Body ({ data, states, currentTimestamp }) {
   }, [rideFilter, state, city]);
 
   const changeState = (newState) => {
-    console.log(city);
-    console.log(newState)
     const cities = cityFilter(data, newState)
     setCityList(cities)
     setStateMenu(false);
