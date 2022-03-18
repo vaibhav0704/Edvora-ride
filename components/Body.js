@@ -18,6 +18,7 @@ function Body ({ data, states, currentTimestamp }) {
   const [cityMenu, setCityMenu] = useState(false);
 
   useEffect(() => {
+    // filter ride is a function that gives the exact rides to be displayed
     const newRideList = filterRide(data, rideFilter, state, city, currentTimestamp);
     setRides(newRideList);
   }, [rideFilter, state, city]);
@@ -37,7 +38,6 @@ function Body ({ data, states, currentTimestamp }) {
 
   return (
     <div className="min-h-screen w-full h-full bg-zinc-750 px-8 pb-8">
-      {/* selector component */}
       <div className="w-full h-20 flex items-center justify-between">
 
         <div className="flex w-4/12 justify-between">
@@ -148,7 +148,6 @@ function Body ({ data, states, currentTimestamp }) {
         </div>
       </div>
 
-      {/* ride list */}
       {rides.map((ride) => (
         <Ride 
           key={ride.station_path}

@@ -1,3 +1,4 @@
+// filtered the rides on the basis of states and/or cities
 export const filterStates = (data, state, city) => {
   if(state && city) {
     const filteredRide = data.filter((ride) => (ride.state === state && ride.city === city));
@@ -11,6 +12,7 @@ export const filterStates = (data, state, city) => {
   }
 }
 
+// filtered rides on the basis of type selected
 export const filterRide = (data, rideFilter, state, city, currentTimestamp) => {
   switch (rideFilter) {
     case "Nearest":
@@ -29,6 +31,7 @@ export const filterRide = (data, rideFilter, state, city, currentTimestamp) => {
   }
 };
 
+// get the list of cities when the state is selected by the user
 export const cityFilter = (data, state) => {
   const filteredRide = data.filter((ride) => ride.state === state);
   const cleanRide = (rides) => rides.filter((v,i) => rides.indexOf(v) === i);

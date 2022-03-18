@@ -4,10 +4,6 @@ import Body from '../components/Body'
 import Header from '../components/Header'
 
 export default function Home({ data, profileData, states }) {
-  // console.log(data);
-  // console.log(profileData);
-  // console.log(states);
-  // console.log(check);
   const currentTimestamp = Math.floor(Date.now()/1000);
   return (
     <div className="h-full flex-column">
@@ -28,6 +24,13 @@ export async function getServerSideProps() {
   const profileData = await profile.json();
   const data = await res.json();
   let states = [];
+
+  // since all the rides had to be arranged in descending order of their Distance between
+  // So the nearest station_code is identified in this function and the distance is calculated too.
+  // and stored in another key value pair in each ride object 
+  // since the loop was done other I had calculated the timestamp out of the given date format
+  // also obtained the states of out each ride
+
   const distance = () => {
     const stationCode = profileData.station_code;
     for (let ride of data) {
@@ -62,6 +65,8 @@ export async function getServerSideProps() {
     };
   };
   distance();
+  
+  // removed the repeated states
   const cleanState = (states) => states.filter((v,i) => states.indexOf(v) === i);
   states = cleanState(states);
   data.sort((a, b) => a.distance - b.distance);
