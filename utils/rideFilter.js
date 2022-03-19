@@ -34,10 +34,10 @@ export const filterRide = (data, rideFilter, state, city, currentTimestamp) => {
 // get the list of cities when the state is selected by the user
 export const cityFilter = (data, state) => {
   const filteredRide = data.filter((ride) => ride.state === state);
-  const cleanRide = (rides) => rides.filter((v,i) => rides.indexOf(v) === i);
-  const cleanRides = cleanRide(filteredRide);
   let cities = [];
-  cleanRides.map(ride => cities.push(ride.city));
+  filteredRide.map(ride => cities.push(ride.city));
+  const cleanRide = (rides) => rides.filter((v,i) => rides.indexOf(v) === i);
+  cities = cleanRide(cities);
   return cities;
 }
 
